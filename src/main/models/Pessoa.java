@@ -16,7 +16,7 @@ public class Pessoa {
 
     }
 
-    public Pessoa(int id, String nome, String cpf, String telefone, Date dataNascimento, Endereco endereco, boolean ativo, String cpf1) {
+    public Pessoa(int id, String nome, String cpf, String telefone, Date dataNascimento, Endereco endereco, boolean ativo) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -24,7 +24,6 @@ public class Pessoa {
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
         this.ativo = ativo;
-        this.cpf = cpf1;
     }
 
     public int getId() {
