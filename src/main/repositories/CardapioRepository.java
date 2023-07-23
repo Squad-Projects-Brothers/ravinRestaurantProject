@@ -107,7 +107,6 @@ public class CardapioRepository implements CardapioDAO {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 int produtoId = resultSet.getInt("id");
-                // You should have a ProdutoRepository to get the Produto object by its ID.
                 Produto produto = buscarProdutoPorId(produtoId);
                 if (produto != null) {
                     produtos.add(produto);
