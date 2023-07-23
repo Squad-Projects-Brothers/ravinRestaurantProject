@@ -1,6 +1,7 @@
 package main.services;
 
 import main.models.Comanda;
+import main.repositories.ComandaRepository;
 import main.repositories.InterfaceDAO.ComandaDAO;
 
 import java.util.List;
@@ -9,8 +10,8 @@ public class ComandaService {
 
     private ComandaDAO comandaDAO;
 
-    public ComandaService(ComandaDAO comandaDAO) {
-        this.comandaDAO = comandaDAO;
+    public ComandaService() {
+        this.comandaDAO = new ComandaRepository();
     }
 
     public void salvarComanda(Comanda comanda) {
@@ -18,7 +19,7 @@ public class ComandaService {
         comandaDAO.salvar(comanda);
     }
 
-    public List<Comanda> listarTodosComanda() {
+    public List<Comanda> listarTodasComandas() {
         return comandaDAO.listarTodos();
     }
 

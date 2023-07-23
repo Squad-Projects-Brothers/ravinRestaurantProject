@@ -1,6 +1,7 @@
 package main.services;
 
 import main.models.Cardapio;
+import main.repositories.CardapioRepository;
 import main.repositories.InterfaceDAO.CardapioDAO;
 
 import java.util.List;
@@ -9,8 +10,8 @@ public class CardapioService {
 
     private CardapioDAO cardapioDAO;
 
-    public CardapioService(CardapioDAO cardapioDAO) {
-        this.cardapioDAO = cardapioDAO;
+    public CardapioService() {
+        this.cardapioDAO = new CardapioRepository();
     }
 
     public void salvarCardapio(Cardapio cardapio) {

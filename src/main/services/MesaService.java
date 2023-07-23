@@ -3,6 +3,7 @@ package main.services;
 
 import main.models.Mesa;
 import main.repositories.InterfaceDAO.MesaDAO;
+import main.repositories.MesaRepository;
 
 import java.util.List;
 
@@ -10,8 +11,8 @@ public class MesaService {
 
     private MesaDAO mesaDAO;
 
-    public MesaService(MesaDAO mesaDAO) {
-        this.mesaDAO = mesaDAO;
+    public MesaService() {
+        this.mesaDAO = new MesaRepository();
     }
 
 

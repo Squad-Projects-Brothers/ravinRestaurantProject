@@ -1,6 +1,7 @@
 package main.services;
 
 import main.models.Cliente;
+import main.repositories.ClienteRepository;
 import main.repositories.InterfaceDAO.ClienteDAO;
 
 import java.util.List;
@@ -9,8 +10,8 @@ public class ClienteService {
 
     private ClienteDAO clienteDAO;
 
-    public ClienteService(ClienteDAO clienteDAO) {
-        this.clienteDAO = clienteDAO;
+    public ClienteService() {
+        this.clienteDAO = new ClienteRepository();
     }
 
     public void salvarCliente(Cliente cliente) {

@@ -2,6 +2,7 @@ package main.services;
 
 import main.models.Pedido;
 import main.repositories.InterfaceDAO.PedidoDAO;
+import main.repositories.PedidoRepository;
 
 import java.util.List;
 
@@ -9,8 +10,8 @@ public class PedidoService {
 
     private PedidoDAO pedidoDAO;
 
-    public PedidoService(PedidoDAO pedidoDAO) {
-        this.pedidoDAO = pedidoDAO;
+    public PedidoService() {
+        this.pedidoDAO = new PedidoRepository();
     }
 
     public void salvarPedido(Pedido pedido) {

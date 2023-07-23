@@ -2,6 +2,7 @@ package main.services;
 
 import main.models.Usuario;
 import main.repositories.InterfaceDAO.UsuarioDAO;
+import main.repositories.UsuarioRepository;
 
 import java.util.List;
 
@@ -9,8 +10,8 @@ public class UsuarioService {
 
     private UsuarioDAO usuarioDAO;
 
-    public UsuarioService(UsuarioDAO usuarioDAO) {
-        this.usuarioDAO = usuarioDAO;
+    public UsuarioService() {
+        this.usuarioDAO = new UsuarioRepository();
     }
 
     public void salvarUsuario(Usuario usuario) {

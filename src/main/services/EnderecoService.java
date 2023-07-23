@@ -1,6 +1,7 @@
 package main.services;
 
 import main.models.Endereco;
+import main.repositories.EnderecoRepository;
 import main.repositories.InterfaceDAO.EnderecoDAO;
 
 import java.util.List;
@@ -9,8 +10,8 @@ public class EnderecoService {
 
     private EnderecoDAO enderecoDAO;
 
-    public EnderecoService(EnderecoDAO enderecoDAO) {
-        this.enderecoDAO = enderecoDAO;
+    public EnderecoService() {
+        this.enderecoDAO = new EnderecoRepository();
     }
 
     public void salvarEndereco(Endereco endereco) {
