@@ -12,9 +12,10 @@ public class PedidoRepository implements PedidoDAO {
     @Override
     public void salvar(Pedido pedido) {
         try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement(
-                     "INSERT INTO pedido (produto_id, data_hora_solicitacao, data_hora_inicio_preparo, tempo_preparo_restante, status_preparo, observacao, quantidade) " +
-                             "VALUES (?, ?, ?, ?, ?, ?, ?)")) {
+                PreparedStatement statement = connection.prepareStatement(
+                        "INSERT INTO pedido (produto_id, data_hora_solicitacao, data_hora_inicio_preparo, tempo_preparo_restante, status_preparo, observacao, quantidade) "
+                                +
+                                "VALUES (?, ?, ?, ?, ?, ?, ?)")) {
             statement.setInt(1, pedido.getProduto().getId());
             statement.setTimestamp(2, pedido.getDataHoraSolicitacao());
             statement.setTimestamp(3, pedido.getDataHoraInicioPreparo());
@@ -33,8 +34,8 @@ public class PedidoRepository implements PedidoDAO {
         List<Pedido> pedidos = new ArrayList<>();
 
         try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM pedido");
-             ResultSet resultSet = statement.executeQuery()) {
+                PreparedStatement statement = connection.prepareStatement("SELECT * FROM pedido");
+                ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 int produtoId = resultSet.getInt("produto_id");
@@ -47,7 +48,8 @@ public class PedidoRepository implements PedidoDAO {
 
                 Produto produto = buscarProdutoPorId(produtoId);
 
-                Pedido pedido = new Pedido(id, produto, dataHoraSolicitacao, dataHoraInicioPreparo, tempoPreparoRestante, statusPreparo, observacao, quantidade);
+                Pedido pedido = new Pedido(id, produto, dataHoraSolicitacao, dataHoraInicioPreparo,
+                        tempoPreparoRestante, statusPreparo, observacao, quantidade);
                 pedidos.add(pedido);
             }
         } catch (SQLException e) {
@@ -60,7 +62,7 @@ public class PedidoRepository implements PedidoDAO {
     @Override
     public void excluir(Pedido pedido) {
         try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement("DELETE FROM pedido WHERE id = ?")) {
+                PreparedStatement statement = connection.prepareStatement("DELETE FROM pedido WHERE id = ?")) {
             statement.setInt(1, pedido.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -71,7 +73,7 @@ public class PedidoRepository implements PedidoDAO {
     @Override
     public Pedido buscarPorId(int id) {
         try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM pedido WHERE id = ?")) {
+                PreparedStatement statement = connection.prepareStatement("SELECT * FROM pedido WHERE id = ?")) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -85,7 +87,8 @@ public class PedidoRepository implements PedidoDAO {
 
                 Produto produto = buscarProdutoPorId(produtoId);
 
-                return new Pedido(id, produto, dataHoraSolicitacao, dataHoraInicioPreparo, tempoPreparoRestante, statusPreparo, observacao, quantidade);
+                return new Pedido(id, produto, dataHoraSolicitacao, dataHoraInicioPreparo, tempoPreparoRestante,
+                        statusPreparo, observacao, quantidade);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -99,6 +102,7 @@ public class PedidoRepository implements PedidoDAO {
         // You can use the ProdutoRepository or any other mechanism for this.
         // For simplicity, let's assume it is already implemented elsewhere.
         // Here, we just return a dummy Produto object.
-        return new Produto(id, "Produto Dummy", "Descrição do Produto Dummy", "COD-001", 10.0, 20.0, "5 mins", "Observações do Produto Dummy", null, true);
+        return new Produto(id, "Produto Dummy", "Descrição do Produto Dummy", "COD-001", 10.0, 20.0, "5 mins",
+                "Observações do Produto Dummy", null, true);
     }
 }

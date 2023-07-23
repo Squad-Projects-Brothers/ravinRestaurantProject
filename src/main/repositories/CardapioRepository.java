@@ -12,8 +12,8 @@ public class CardapioRepository implements CardapioDAO {
     @Override
     public void salvar(Cardapio cardapio) {
         try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement(
-                     "INSERT INTO cardapio (nome) VALUES (?)", Statement.RETURN_GENERATED_KEYS)) {
+                PreparedStatement statement = connection.prepareStatement(
+                        "INSERT INTO cardapio (nome) VALUES (?)", Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, cardapio.getNome());
             statement.executeUpdate();
 
@@ -31,8 +31,8 @@ public class CardapioRepository implements CardapioDAO {
 
     private void associarProdutoAoCardapio(int cardapioId, int produtoId) {
         try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement(
-                     "INSERT INTO cardapio_produto (cardapio_id, produto_id) VALUES (?, ?)")) {
+                PreparedStatement statement = connection.prepareStatement(
+                        "INSERT INTO cardapio_produto (cardapio_id, produto_id) VALUES (?, ?)")) {
             statement.setInt(1, cardapioId);
             statement.setInt(2, produtoId);
             statement.executeUpdate();
@@ -46,8 +46,8 @@ public class CardapioRepository implements CardapioDAO {
         List<Cardapio> cardapios = new ArrayList<>();
 
         try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM cardapio");
-             ResultSet resultSet = statement.executeQuery()) {
+                PreparedStatement statement = connection.prepareStatement("SELECT * FROM cardapio");
+                ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String nome = resultSet.getString("nome");
@@ -67,7 +67,7 @@ public class CardapioRepository implements CardapioDAO {
     @Override
     public void excluir(Cardapio cardapio) {
         try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement("DELETE FROM cardapio WHERE id = ?")) {
+                PreparedStatement statement = connection.prepareStatement("DELETE FROM cardapio WHERE id = ?")) {
             statement.setInt(1, cardapio.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -78,7 +78,7 @@ public class CardapioRepository implements CardapioDAO {
     @Override
     public Cardapio buscarPorId(int id) {
         try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM cardapio WHERE id = ?")) {
+                PreparedStatement statement = connection.prepareStatement("SELECT * FROM cardapio WHERE id = ?")) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -99,10 +99,10 @@ public class CardapioRepository implements CardapioDAO {
         List<Produto> produtos = new ArrayList<>();
 
         try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement(
-                     "SELECT p.* FROM produto p " +
-                             "JOIN cardapio_produto cp ON p.id = cp.produto_id " +
-                             "WHERE cp.cardapio_id = ?")) {
+                PreparedStatement statement = connection.prepareStatement(
+                        "SELECT p.* FROM produto p " +
+                                "JOIN cardapio_produto cp ON p.id = cp.produto_id " +
+                                "WHERE cp.cardapio_id = ?")) {
             statement.setInt(1, cardapioId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {

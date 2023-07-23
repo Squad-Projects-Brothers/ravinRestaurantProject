@@ -11,9 +11,9 @@ public class ClienteRepository implements ClienteDAO {
     @Override
     public void salvar(Cliente cliente) {
         try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement(
-                     "INSERT INTO cliente (nome, cpf, telefone, data_nascimento, endereco_id, ativo, observacao) " +
-                             "VALUES (?, ?, ?, ?, ?, ?, ?)")) {
+                PreparedStatement statement = connection.prepareStatement(
+                        "INSERT INTO cliente (nome, cpf, telefone, data_nascimento, endereco_id, ativo, observacao) " +
+                                "VALUES (?, ?, ?, ?, ?, ?, ?)")) {
             statement.setString(1, cliente.getNome());
             statement.setString(2, cliente.getCpf());
             statement.setString(3, cliente.getTelefone());
@@ -32,8 +32,8 @@ public class ClienteRepository implements ClienteDAO {
         List<Cliente> clientes = new ArrayList<>();
 
         try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM cliente");
-             ResultSet resultSet = statement.executeQuery()) {
+                PreparedStatement statement = connection.prepareStatement("SELECT * FROM cliente");
+                ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String nome = resultSet.getString("nome");
@@ -68,7 +68,7 @@ public class ClienteRepository implements ClienteDAO {
     @Override
     public void excluir(Cliente cliente) {
         try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement("DELETE FROM cliente WHERE id = ?")) {
+                PreparedStatement statement = connection.prepareStatement("DELETE FROM cliente WHERE id = ?")) {
             statement.setInt(1, cliente.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -79,7 +79,7 @@ public class ClienteRepository implements ClienteDAO {
     @Override
     public Cliente buscarPorId(int id) {
         try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM cliente WHERE id = ?")) {
+                PreparedStatement statement = connection.prepareStatement("SELECT * FROM cliente WHERE id = ?")) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
