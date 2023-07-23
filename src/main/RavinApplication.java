@@ -9,10 +9,10 @@ import java.util.Scanner;
 
 public class RavinApplication {
   public static void main(String[] args) {
-    int port = 1234; // Porta do servidor socket
+    /*int port = 1234; // Porta do servidor socket
 
     SocketServer socketServer = new SocketServer(port);
-    socketServer.start();
+    socketServer.start();*/
 
     Scanner scanner = new Scanner(System.in);
     ProdutoController produtoController = new ProdutoController();
