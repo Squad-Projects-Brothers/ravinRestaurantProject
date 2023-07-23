@@ -14,7 +14,6 @@ public class UsuarioRepository implements UsuarioDAO {
 
     @Override
     public void salvar(Usuario usuario) {
-
     }
 
     @Override

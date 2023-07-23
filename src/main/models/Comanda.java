@@ -83,4 +83,5 @@ public class Comanda {
   public void setValorTotal(double valorTotal) {
     this.valorTotal = valorTotal;
   }
+
 }

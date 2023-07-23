@@ -1,11 +1,18 @@
 package main.models;
 
+import java.util.Date;
+
 public class Cliente extends Pessoa {
 
     private int id;
     private String observacao;
 
     public Cliente(){
+    }
+    public Cliente(int id, String nome, String cpf, String telefone, Date dataNascimento, Endereco endereco, boolean ativo, int id1, String observacao) {
+        super(id, nome, cpf, telefone, dataNascimento, endereco, ativo);
+        this.id = id;
+        this.observacao = observacao;
     }
 
     public Cliente(int id, String observacao) {

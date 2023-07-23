@@ -20,8 +20,9 @@ public class Funcionario extends Pessoa{
 
     public Funcionario(){}
 
-    public Funcionario(int id, String rg, EstadoCivil estadoCivil, Escolaridade escolaridade, Cargo cargo, String numeroCarteiraTrabalho, Date dataAdmissao, Date dataDemissao, boolean disponivel) {
-        this.id = id;
+    public Funcionario(int id, String nome, String cpf, String telefone, Date dataNascimento, Endereco endereco, boolean ativo, int id1, String rg, EstadoCivil estadoCivil, Escolaridade escolaridade, Cargo cargo, String numeroCarteiraTrabalho, Date dataAdmissao, Date dataDemissao, boolean disponivel) {
+        super(id, nome, cpf, telefone, dataNascimento, endereco, ativo);
+        this.id = id1;
         this.rg = rg;
         this.estadoCivil = estadoCivil;
         this.escolaridade = escolaridade;
