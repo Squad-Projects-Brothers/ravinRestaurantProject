@@ -2,6 +2,7 @@ package main.repositories;
 
 import main.enums.TipoProdutoCardapio;
 import main.models.Produto;
+import main.repositories.InterfaceDAO.ProdutoDAO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,10 +12,10 @@ public class ProdutoRepository implements ProdutoDAO {
   @Override
   public void salvar(Produto produto) {
     try (Connection connection = ConnectionFactory.getConnection();
-         PreparedStatement statement = connection.prepareStatement(
-             "INSERT INTO produto (nome, descricao, codigo, preco_custo, preco_venda, " +
-                 "tempo_preparo, observacoes, tipo_produto, ativo) " +
-                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+        PreparedStatement statement = connection.prepareStatement(
+            "INSERT INTO produto (nome, descricao, codigo, preco_custo, preco_venda, " +
+                "tempo_preparo, observacoes, tipo_produto, ativo) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
       statement.setString(1, produto.getNome());
       statement.setString(2, produto.getDescricao());
       statement.setString(3, produto.getCodigo());
@@ -35,8 +36,8 @@ public class ProdutoRepository implements ProdutoDAO {
     List<Produto> produtos = new ArrayList<>();
 
     try (Connection connection = ConnectionFactory.getConnection();
-         PreparedStatement statement = connection.prepareStatement("SELECT * FROM produto");
-         ResultSet resultSet = statement.executeQuery()) {
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM produto");
+        ResultSet resultSet = statement.executeQuery()) {
       while (resultSet.next()) {
         int id = resultSet.getInt("id");
         String nome = resultSet.getString("nome");
@@ -63,7 +64,7 @@ public class ProdutoRepository implements ProdutoDAO {
   @Override
   public void excluir(Produto produto) {
     try (Connection connection = ConnectionFactory.getConnection();
-         PreparedStatement statement = connection.prepareStatement("DELETE FROM produto WHERE id = ?")) {
+        PreparedStatement statement = connection.prepareStatement("DELETE FROM produto WHERE id = ?")) {
       statement.setInt(1, produto.getId());
       statement.executeUpdate();
     } catch (SQLException e) {
@@ -74,7 +75,7 @@ public class ProdutoRepository implements ProdutoDAO {
   @Override
   public Produto buscarPorId(int id) {
     try (Connection connection = ConnectionFactory.getConnection();
-         PreparedStatement statement = connection.prepareStatement("SELECT * FROM produto WHERE id = ?")) {
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM produto WHERE id = ?")) {
       statement.setInt(1, id);
       ResultSet resultSet = statement.executeQuery();
       if (resultSet.next()) {

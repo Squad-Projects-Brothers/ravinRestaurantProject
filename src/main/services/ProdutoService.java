@@ -1,8 +1,9 @@
 package main.services;
 
 import java.util.List;
-import main.repositories.ProdutoDAO;
+
 import main.repositories.ProdutoRepository;
+import main.repositories.InterfaceDAO.ProdutoDAO;
 import main.models.Produto;
 
 public class ProdutoService {

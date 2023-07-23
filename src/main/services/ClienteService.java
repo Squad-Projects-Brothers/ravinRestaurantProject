@@ -1,7 +1,7 @@
 package main.services;
 
 import main.models.Cliente;
-import main.repositories.ClienteDAO;
+import main.repositories.InterfaceDAO.ClienteDAO;
 
 import java.util.List;
 

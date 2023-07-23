@@ -3,6 +3,7 @@ package main.repositories;
 import main.enums.TipoProdutoCardapio;
 import main.models.Cardapio;
 import main.models.Produto;
+import main.repositories.InterfaceDAO.CardapioDAO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -120,11 +121,7 @@ public class CardapioRepository implements CardapioDAO {
     }
 
     private Produto buscarProdutoPorId(int id) {
-        // Implement the logic to retrieve the Produto object by its ID.
-        // You can use the ProdutoRepository or any other mechanism for this.
-        // For simplicity, let's assume it is already implemented elsewhere.
-        // Here, we just return a dummy Produto object.
-        return new Produto(id, "Produto Dummy", "Descrição Dummy", "COD-001", 10.0, 20.0,
-                "5 min", "Observações Dummy", TipoProdutoCardapio.BEBIDA, true);
+        ProdutoRepository produtoRepository = new ProdutoRepository();
+        return produtoRepository.buscarPorId(id);
     }
 }

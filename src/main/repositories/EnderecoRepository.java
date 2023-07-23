@@ -1,6 +1,7 @@
 package main.repositories;
 
 import main.models.Endereco;
+import main.repositories.InterfaceDAO.EnderecoDAO;
 
 import java.sql.*;
 import java.util.ArrayList;

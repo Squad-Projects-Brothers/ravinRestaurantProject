@@ -1,7 +1,7 @@
 package main.services;
 
 import main.models.Pedido;
-import main.repositories.PedidoDAO;
+import main.repositories.InterfaceDAO.PedidoDAO;
 
 import java.util.List;
 

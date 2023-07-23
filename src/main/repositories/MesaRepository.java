@@ -1,6 +1,7 @@
 package main.repositories;
 
 import main.models.Mesa;
+import main.repositories.InterfaceDAO.MesaDAO;
 import main.enums.StatusMesa;
 
 import java.sql.*;

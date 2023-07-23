@@ -2,6 +2,7 @@ package main.repositories;
 
 import main.models.Cliente;
 import main.models.Endereco;
+import main.repositories.InterfaceDAO.ClienteDAO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -112,11 +113,9 @@ public class ClienteRepository implements ClienteDAO {
         return null;
     }
 
-    private Endereco buscarEnderecoPorId(int id) {
-        // Implement the logic to retrieve the Endereco object by its ID.
-        // You can use the EnderecoRepository or any other mechanism for this.
-        // For simplicity, let's assume it is already implemented elsewhere.
-        // Here, we just return a dummy Endereco object.
-        return new Endereco(id, "12345-678", "São Paulo", "SP", "Rua A", 123, "Bairro X", "Complemento Y");
+    public Endereco buscarEnderecoPorId(int id) {
+        EnderecoRepository enderecoRepository = new EnderecoRepository();
+        return enderecoRepository.buscarPorId(id);
     }
+    
 }

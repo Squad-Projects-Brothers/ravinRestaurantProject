@@ -1,7 +1,7 @@
 package main.services;
 
 import main.models.Usuario;
-import main.repositories.UsuarioDAO;
+import main.repositories.InterfaceDAO.UsuarioDAO;
 
 import java.util.List;
 

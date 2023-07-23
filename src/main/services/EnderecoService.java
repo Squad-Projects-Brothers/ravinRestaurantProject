@@ -1,7 +1,7 @@
 package main.services;
 
 import main.models.Endereco;
-import main.repositories.EnderecoDAO;
+import main.repositories.InterfaceDAO.EnderecoDAO;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package main.services;
 
 import main.models.Comanda;
-import main.repositories.ComandaDAO;
+import main.repositories.InterfaceDAO.ComandaDAO;
 
 import java.util.List;
 

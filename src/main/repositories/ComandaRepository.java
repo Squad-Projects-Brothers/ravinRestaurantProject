@@ -3,6 +3,7 @@ package main.repositories;
 import main.models.Comanda;
 import main.models.Mesa;
 import main.models.Pedido;
+import main.repositories.InterfaceDAO.ComandaDAO;
 import main.enums.StatusComanda;
 
 import java.sql.*;
@@ -92,11 +93,8 @@ public class ComandaRepository implements ComandaDAO {
     }
 
     private Mesa buscarMesaPorId(int id) {
-        // Implement the logic to retrieve the Mesa object by its ID.
-        // You can use the MesaRepository or any other mechanism for this.
-        // For simplicity, let's assume it is already implemented elsewhere.
-        // Here, we just return a dummy Mesa object.
-        return new Mesa(id, "COD-001", 1, null, 4);
+        MesaRepository mesaRepository = new MesaRepository();
+        return mesaRepository.buscarPorId(id);
     }
 
     private List<Pedido> buscarPedidosPorComandaId(int comandaId) {

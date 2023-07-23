@@ -2,6 +2,7 @@ package main.repositories;
 
 import main.models.Pedido;
 import main.models.Produto;
+import main.repositories.InterfaceDAO.PedidoDAO;
 import main.enums.StatusPreparoPedido;
 
 import java.sql.*;
@@ -98,11 +99,7 @@ public class PedidoRepository implements PedidoDAO {
     }
 
     private Produto buscarProdutoPorId(int id) {
-        // Implement the logic to retrieve the Produto object by its ID.
-        // You can use the ProdutoRepository or any other mechanism for this.
-        // For simplicity, let's assume it is already implemented elsewhere.
-        // Here, we just return a dummy Produto object.
-        return new Produto(id, "Produto Dummy", "Descrição do Produto Dummy", "COD-001", 10.0, 20.0, "5 mins",
-                "Observações do Produto Dummy", null, true);
+        ProdutoRepository produto = new ProdutoRepository();
+        return produto.buscarPorId(id);
     }
 }

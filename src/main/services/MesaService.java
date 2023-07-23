@@ -2,7 +2,7 @@ package main.services;
 
 
 import main.models.Mesa;
-import main.repositories.MesaDAO;
+import main.repositories.InterfaceDAO.MesaDAO;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package main.services;
 
 import main.models.Cardapio;
-import main.repositories.CardapioDAO;
+import main.repositories.InterfaceDAO.CardapioDAO;
 
 import java.util.List;
 
