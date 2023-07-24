@@ -11,6 +11,20 @@ public class Endereco {
     private String bairro;
     private String complemento;
 
+    @Override
+    public String toString() {
+        return "Endereco{" +
+            "id=" + id +
+            ", cep='" + cep + '\'' +
+            ", cidade='" + cidade + '\'' +
+            ", estado='" + estado + '\'' +
+            ", rua='" + rua + '\'' +
+            ", numero=" + numero +
+            ", bairro='" + bairro + '\'' +
+            ", complemento='" + complemento + '\'' +
+            '}';
+    }
+
     public Endereco(){}
 
     public Endereco(int id, String cep, String cidade, String estado, String rua, int numero, String bairro, String complemento) {

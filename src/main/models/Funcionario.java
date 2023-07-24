@@ -20,6 +20,21 @@ public class Funcionario extends Pessoa{
 
     public Funcionario(){}
 
+    @Override
+    public String toString() {
+        return "Funcionario{" +
+            "id=" + id +
+            ", rg='" + rg + '\'' +
+            ", estadoCivil=" + estadoCivil +
+            ", escolaridade=" + escolaridade +
+            ", cargo=" + cargo +
+            ", numeroCarteiraTrabalho='" + numeroCarteiraTrabalho + '\'' +
+            ", dataAdmissao=" + dataAdmissao +
+            ", dataDemissao=" + dataDemissao +
+            ", disponivel=" + disponivel +
+            '}';
+    }
+
     public Funcionario(int id, String nome, String cpf, String telefone, Date dataNascimento, Endereco endereco, boolean ativo, int id1, String rg, EstadoCivil estadoCivil, Escolaridade escolaridade, Cargo cargo, String numeroCarteiraTrabalho, Date dataAdmissao, Date dataDemissao, boolean disponivel) {
         super(id, nome, cpf, telefone, dataNascimento, endereco, ativo);
         this.id = id1;

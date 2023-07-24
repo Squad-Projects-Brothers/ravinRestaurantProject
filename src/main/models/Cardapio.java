@@ -8,6 +8,15 @@ public class Cardapio {
   private String nome;
   private List<Produto> produtos;
 
+  @Override
+  public String toString() {
+    return "Cardapio{" +
+        "id=" + id +
+        ", nome='" + nome + '\'' +
+        ", produtos=" + produtos +
+        '}';
+  }
+
   public Cardapio() {
   }
 

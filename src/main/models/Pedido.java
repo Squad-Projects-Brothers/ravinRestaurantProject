@@ -18,6 +18,21 @@ public class Pedido {
   public Pedido() {
   }
 
+  @Override
+  public String toString() {
+    return "Pedido{" +
+        "id=" + id +
+        ", produto=" + produto +
+        ", comanda=" + comanda +
+        ", dataHoraSolicitacao=" + dataHoraSolicitacao +
+        ", dataHoraInicioPreparo=" + dataHoraInicioPreparo +
+        ", tempoPreparoRestante=" + tempoPreparoRestante +
+        ", statusPreparo=" + statusPreparo +
+        ", observacao='" + observacao + '\'' +
+        ", quantidade=" + quantidade +
+        '}';
+  }
+
   public Pedido(int id, Produto produto, Comanda comanda, Timestamp dataHoraSolicitacao, Timestamp dataHoraInicioPreparo, Timestamp tempoPreparoRestante, StatusPreparoPedido statusPreparo, String observacao, int quantidade) {
     this.id = id;
     this.produto = produto;

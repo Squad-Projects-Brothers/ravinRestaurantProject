@@ -13,6 +13,17 @@ public class Mesa {
 
     public Mesa(){};
 
+    @Override
+    public String toString() {
+        return "Mesa{" +
+            "id=" + id +
+            ", codigo='" + codigo + '\'' +
+            ", numero=" + numero +
+            ", statusMesa=" + statusMesa +
+            ", capacidade=" + capacidade +
+            '}';
+    }
+
     public Mesa(int id, String codigo, int numero, StatusMesa statusMesa, int capacidade) {
         this.id = id;
         this.codigo = codigo;

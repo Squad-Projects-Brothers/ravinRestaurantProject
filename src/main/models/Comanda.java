@@ -14,6 +14,19 @@ public class Comanda {
 
   private double valorTotal;
 
+  @Override
+  public String toString() {
+    return "Comanda{" +
+        "id=" + id +
+        ", mesa=" + mesa +
+        ", pedidos=" + pedidos +
+        ", codigo='" + codigo + '\'' +
+        ", observacoes='" + observacoes + '\'' +
+        ", statusComanda=" + statusComanda +
+        ", valorTotal=" + valorTotal +
+        '}';
+  }
+
   public Comanda() {
   }
 

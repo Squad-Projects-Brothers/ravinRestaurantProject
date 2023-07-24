@@ -16,6 +16,19 @@ public abstract class Pessoa {
 
     }
 
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+            "id=" + id +
+            ", nome='" + nome + '\'' +
+            ", cpf='" + cpf + '\'' +
+            ", telefone='" + telefone + '\'' +
+            ", dataNascimento=" + dataNascimento +
+            ", endereco=" + endereco +
+            ", ativo=" + ativo +
+            '}';
+    }
+
     public Pessoa(int id, String nome, String cpf, String telefone, Date dataNascimento, Endereco endereco, boolean ativo) {
         this.id = id;
         this.nome = nome;

@@ -16,6 +16,22 @@ public class Produto implements Serializable {
     private TipoProdutoCardapio tipoProduto;
     private boolean ativo;
 
+  @Override
+  public String toString() {
+    return "Produto{" +
+        "id=" + id +
+        ", nome='" + nome + '\'' +
+        ", descricao='" + descricao + '\'' +
+        ", codigo='" + codigo + '\'' +
+        ", precoCusto=" + precoCusto +
+        ", precoVenda=" + precoVenda +
+        ", tempoPreparo='" + tempoPreparo + '\'' +
+        ", observacoes='" + observacoes + '\'' +
+        ", tipoProduto=" + tipoProduto +
+        ", ativo=" + ativo +
+        '}';
+  }
+
   public Produto() {
   }
 
