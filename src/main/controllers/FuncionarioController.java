@@ -1,4 +1,4 @@
-package main.controller;
+package main.controllers;
 
 import main.models.Funcionario;
 import main.services.FuncionarioService;

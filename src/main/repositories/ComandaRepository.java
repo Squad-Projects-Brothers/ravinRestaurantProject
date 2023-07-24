@@ -16,13 +16,26 @@ public class ComandaRepository implements ComandaDAO {
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(
                      "INSERT INTO comanda (mesa_id, codigo, observacoes, status_comanda, valor_total) " +
-                             "VALUES (?, ?, ?, ?, ?)")) {
+                             "VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
             statement.setInt(1, comanda.getMesa().getId());
             statement.setString(2, comanda.getCodigo());
             statement.setString(3, comanda.getObservacoes());
             statement.setString(4, comanda.getStatusComanda().toString());
             statement.setDouble(5, comanda.getValorTotal());
             statement.executeUpdate();
+
+            ResultSet resultSet = statement.getGeneratedKeys();
+            if (resultSet.next()) {
+                int comandaId = resultSet.getInt(1);
+                comanda.setId(comandaId);
+
+                // Salvar os pedidos associados à comanda no banco de dados
+                PedidoRepository pedidoRepository = new PedidoRepository();
+                for (Pedido pedido : comanda.getPedidos()) {
+                    pedido.setComanda(comanda);
+                    pedidoRepository.salvar(pedido);
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -98,12 +111,7 @@ public class ComandaRepository implements ComandaDAO {
     }
 
     private List<Pedido> buscarPedidosPorComandaId(int comandaId) {
-        // Implement the logic to retrieve a list of Pedido objects by the comandaId.
-        // You can use the PedidoRepository or any other mechanism for this.
-        // For simplicity, let's assume it is already implemented elsewhere.
-        // Here, we just return a dummy list of Pedido objects.
-        List<Pedido> pedidos = new ArrayList<>();
-        pedidos.add(new Pedido(1, null, null, null, null, null, null, 0));
-        return pedidos;
+        PedidoRepository pedidoRepository = new PedidoRepository();
+        return (List<Pedido>) pedidoRepository.buscarPorId(comandaId);
     }
 }

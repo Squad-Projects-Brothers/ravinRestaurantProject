@@ -27,7 +27,7 @@ public class UsuarioService {
         usuarioDAO.excluir(mesa);
     }
 
-    public Usuario buscarMesaPorId(int id) {
+    public Usuario buscarUsuarioPorId(int id) {
         return usuarioDAO.buscarPorId(id);
     }
 

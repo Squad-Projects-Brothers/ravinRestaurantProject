@@ -6,7 +6,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.List;
 
-import main.controller.ProdutoController;
+import main.controllers.ProdutoController;
 import main.models.Produto;
 
 public class SocketServer {

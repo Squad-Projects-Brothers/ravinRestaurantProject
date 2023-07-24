@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 public class Pedido {
   private int id;
   private Produto produto;
+  private Comanda comanda;
   private Timestamp dataHoraSolicitacao;
   private Timestamp dataHoraInicioPreparo;
   private Timestamp tempoPreparoRestante;
@@ -17,9 +18,10 @@ public class Pedido {
   public Pedido() {
   }
 
-  public Pedido(int id, Produto produto, Timestamp dataHoraSolicitacao, Timestamp dataHoraInicioPreparo, Timestamp tempoPreparoRestante, StatusPreparoPedido statusPreparo, String observacao, int quantidade) {
+  public Pedido(int id, Produto produto, Comanda comanda, Timestamp dataHoraSolicitacao, Timestamp dataHoraInicioPreparo, Timestamp tempoPreparoRestante, StatusPreparoPedido statusPreparo, String observacao, int quantidade) {
     this.id = id;
     this.produto = produto;
+    this.comanda = comanda;
     this.dataHoraSolicitacao = dataHoraSolicitacao;
     this.dataHoraInicioPreparo = dataHoraInicioPreparo;
     this.tempoPreparoRestante = tempoPreparoRestante;
@@ -42,6 +44,14 @@ public class Pedido {
 
   public void setProduto(Produto produto) {
     this.produto = produto;
+  }
+
+  public Comanda getComanda() {
+    return comanda;
+  }
+
+  public void setComanda(Comanda comanda) {
+    this.comanda = comanda;
   }
 
   public Timestamp getDataHoraSolicitacao() {

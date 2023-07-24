@@ -1,7 +1,6 @@
 package main;
 
-import main.configs.SocketServer;
-import main.controller.ProdutoController;
+import main.controllers.ProdutoController;
 import main.enums.TipoProdutoCardapio;
 import main.models.Produto;
 
