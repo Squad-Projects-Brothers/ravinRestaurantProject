@@ -1,51 +1,112 @@
--- Inserir alguns endereços
-INSERT INTO Endereco (cep, cidade, estado, rua, numero, bairro, complemento) VALUES
-    ('12345-678', 'Cidade A', 'Estado A', 'Rua A', 10, 'Bairro A', 'Complemento A'),
-    ('98765-432', 'Cidade B', 'Estado B', 'Rua B', 20, 'Bairro B', 'Complemento B');
+INSERT INTO Mesa (codigo, numero, statusMesa, capacidade)
+VALUES
+    ('M01', 1, 'LIVRE', 4),
+    ('M02', 2, 'OCUPADA', 6),
+    ('M03', 3, 'LIVRE', 2),
+    ('M04', 4, 'RESERVADA', 8),
+    ('M05', 5, 'LIVRE', 4),
+    ('M06', 6, 'OCUPADA', 6),
+    ('M07', 7, 'LIVRE', 2),
+    ('M08', 8, 'OCUPADA', 4),
+    ('M09', 9, 'LIVRE', 2),
+    ('M10', 10, 'OCUPADA', 6);
 
--- Inserir algumas pessoas
-INSERT INTO Pessoa (nome, cpf, telefone, data_nascimento, id_endereco, ativo) VALUES
-    ('João da Silva', '111.111.111-11', '(11) 1111-1111', '1990-01-01', 1, true),
-    ('Maria Souza', '222.222.222-22', '(22) 2222-2222', '1985-05-05', 2, true);
+INSERT INTO Endereco (cep, cidade, estado, rua, numero, bairro, complemento)
+VALUES
+    ('12345-678', 'Cidade A', 'Estado X', 'Rua Principal', 100, 'Centro', NULL),
+    ('98765-432', 'Cidade B', 'Estado Y', 'Avenida Secundária', 500, 'Bairro Novo', 'Bloco C'),
+    ('54321-876', 'Cidade C', 'Estado Z', 'Praça da Esquina', 25, 'Vila Feliz', NULL),
+    ('11111-222', 'Cidade D', 'Estado W', 'Rua das Flores', 50, 'Jardim Encantado', NULL),
+    ('33333-444', 'Cidade E', 'Estado V', 'Rua da Colina', 30, 'Bairro Antigo', 'Casa 10');
 
--- Inserir clientes (vinculando a pessoa)
-INSERT INTO Cliente (pessoa_id, observacao) VALUES
-    (1, 'Cliente VIP'), (2, 'Cliente Novo');
 
--- Inserir funcionários (vinculando a pessoa)
-INSERT INTO Funcionario (pessoa_id, rg, estado_civil, escolaridade, cargo, numero_carteira_trabalho, data_admissao, data_demissao, disponivel) VALUES
-    (1, '1234567-89', 'Solteiro(a)', 'Ensino Médio', 'Garçom', 'ABC123', '2021-01-01', NULL, true),
-    (2, '9876543-21', 'Casado(a)', 'Ensino Superior', 'Cozinheiro', 'XYZ789', '2020-05-01', NULL, true);
+INSERT INTO Pessoa (nome, cpf, telefone, data_nascimento, id_endereco, ativo)
+VALUES
+    ('Fulano da Silva', '123.456.789-10', '(11) 98765-4321', '1990-05-15', 1, true),
+    ('Ciclana Souza', '987.654.321-10', '(21) 98765-4321', '1985-10-20', 2, true),
+    ('Beltrano Oliveira', '567.890.123-45', '(31) 98765-4321', '2000-02-01', 3, true),
+    ('John Doe', '111.222.333-44', '(41) 98765-4321', '1978-11-30', 4, true),
+    ('Jane Smith', '555.666.777-88', '(51) 98765-4321', '1995-08-25', 5, true),
+    ('Teste Pessoa', '999.888.777-66', '(61) 98765-4321', '2005-04-10', 1, true),
+    ('Maria Teste', '333.444.555-66', '(71) 98765-4321', '1992-12-05', 2, true),
+    ('João Exemplo', '777.666.555-44', '(81) 98765-4321', '1980-09-15', 3, true),
+    ('Ana Modelo', '222.333.444-55', '(91) 98765-4321', '1998-07-01', 4, true),
+    ('Carlos Amostra', '444.555.666-77', '(51) 98765-4321', '2003-03-20', 5, true);
 
--- Inserir usuários
-INSERT INTO Usuario (nome, login, senha, tipoUsuario, ativo, logado, criadoPor, criadoEm, alteradoPor, alteradoEm) VALUES
-    ('Administrador', 'admin', 'hashed_password', 'ADMIN', true, false, 'admin', '2023-07-23', NULL, NULL),
-    ('Funcionário', 'funcionario', 'hashed_password', 'FUNCIONARIO', true, false, 'admin', '2023-07-23', NULL, NULL);
+   
+   
+-- Clientes
+INSERT INTO Cliente (pessoa_id, observacao)
+VALUES
+    (1, 'Cliente fiel e frequente.'),
+    (2, 'Cliente novo, atendimento personalizado.'),
+    (3, 'Cliente preferencial, descontos especiais.'),
+    (4, 'Cliente ocasional, recomendação para promoções.'),
+    (5, 'Cliente VIP, tratamento especializado.');
 
--- Inserir produtos
-INSERT INTO Produto (nome, descricao, codigo, precoCusto, precoVenda, tempoPreparo, observacoes, tipoProduto, ativo) VALUES
-    ('Produto 1', 'Descrição do Produto 1', 'COD001', 10.00, 20.00, '10 minutos', 'Observações Produto 1', 'Bebida', true),
-    ('Produto 2', 'Descrição do Produto 2', 'COD002', 15.00, 25.00, '15 minutos', 'Observações Produto 2', 'Comida', true);
+-- Funcionários
+INSERT INTO Funcionario (pessoa_id, rg, estado_civil, escolaridade, cargo, numero_carteira_trabalho, data_admissao, data_demissao, disponivel)
+VALUES
+    (6, '12.345.678-9', 'SOLTEIRO', 'MEDIO', 'GARCON', '123456', '2021-01-15', NULL, true),
+    (7, '98.765.432-1', 'CASADO', 'SUPERIOR', 'GERENTE', '654321', '2019-05-10', NULL, true),
+    (8, '56.789.012-3', 'SOLTEIRO', 'MEDIO', 'COZINHEIRO', '789012', '2022-03-20', NULL, true),
+    (9, '11.222.333-4', 'CASADO', 'SUPERIOR', 'GARCON', '222333', '2020-11-25', NULL, true),
+    (10, '55.66.77-88', 'SOLTEIRO', 'MEDIO', 'GARCON', '666777', '2023-02-05', NULL, true);
 
--- Inserir cardápios
-INSERT INTO Cardapio (nome) VALUES
-    ('Cardápio 1'), ('Cardápio 2');
+   
+INSERT INTO Produto (nome, descricao, codigo, precoCusto, precoVenda, tempoPreparo, observacoes, tipoProduto, ativo)
+VALUES
+    ('Hambúrguer', 'Hambúrguer com queijo e alface.', 'HB001', 5.00, 15.00, '10 minutos', NULL, 'PRATO_PRINCIPAL', true),
+    ('Pizza', 'Pizza de calabresa com borda recheada.', 'PZ001', 10.00, 25.00, '20 minutos', 'Tamanho Família', 'PRATO_PRINCIPAL', true),
+    ('Refrigerante', 'Refrigerante de cola em lata.', 'RF001', 2.00, 5.00, '1 minuto', NULL, 'BEBIDA', true),
+    ('Sorvete', 'Sorvete de chocolate com cobertura.', 'SR001', 3.50, 8.00, '5 minutos', NULL, 'SOBREMESA', true),
+    ('Salada', 'Salada mista com alface, tomate e cenoura.', 'SD001', 4.00, 12.00, '5 minutos', 'Opção vegetariana', 'PRATO_PRINCIPAL', true);
 
--- Inserir associação de produtos com cardápios
-INSERT INTO CardapioProduto (cardapio_id, produto_id) VALUES
-    (1, 1), (1, 2), (2, 2);
 
--- Inserir mesas
-INSERT INTO Mesa (codigo, numero, statusMesa, capacidade) VALUES
-    ('MESA001', 1, 'Livre', 4),
-    ('MESA002', 2, 'Ocupada', 6);
+INSERT INTO Cardapio (nome)
+VALUES
+    ('Cardápio de Verão'),
+    ('Cardápio de Inverno'),
+    ('Cardápio de Bebidas'),
+    ('Cardápio de Sobremesas');
 
--- Inserir comandas (vinculando a mesa)
-INSERT INTO Comanda (mesa_id, codigo, observacoes, statusComanda, valorTotal) VALUES
-    (1, 'COM001', 'Comanda Mesa 1', 'ABERTA', 0.00),
-    (2, 'COM002', 'Comanda Mesa 2', 'FECHADA', 50.00);
+INSERT INTO CardapioProduto (cardapio_id, produto_id)
+VALUES
+    (1, 1),
+    (1, 2),
+    (1, 5),
+    (2, 2),
+    (2, 4),
+    (2, 5),
+    (3, 3),
+    (4, 4),
+    (4, 5);
+   
+   
+   
+INSERT INTO Comanda (mesa_id, codigo, observacoes, statusComanda, valorTotal)
+VALUES
+    (1, 'CMD001', 'Comanda para família', 'EM_ABERTO', 0),
+    (2, 'CMD002', 'Comanda para festa', 'FECHADA', 50),
+    (3, 'CMD003', 'Comanda para casal', 'EM_ABERTO', 0),
+    (4, 'CMD004', 'Comanda para aniversário', 'FECHADA', 75.50),
+    (5, 'CMD005', 'Comanda para grupo', 'EM_ABERTO', 0),
+    (6, 'CMD006', 'Comanda para celebração', 'EM_ABERTO', 30),
+    (7, 'CMD007', 'Comanda para reunião', 'EM_ABERTO', 0),
+    (8, 'CMD008', 'Comanda para confraternização', 'FECHADA', 65),
+    (9, 'CMD009', 'Comanda para dupla', 'EM_ABERTO', 0),
+    (10, 'CMD010', 'Comanda para evento', 'FECHADA', 100);
+   
 
--- Inserir pedidos (vinculando a produto e comanda)
-INSERT INTO Pedido (produto_id, comanda_id, dataHoraSolicitacao, dataHoraInicioPreparo, tempoPreparoRestante, statusPreparo, observacao, quantidade) VALUES
-    (1, 1, '2023-07-23 12:30:00', '2023-07-23 12:35:00', '2023-07-23 12:40:00', 'EM_PREPARO', 'Pedido 1', 2),
-    (2, 2, '2023-07-23 13:00:00', '2023-07-23 13:05:00', '2023-07-23 13:10:00', 'CONCLUIDO', 'Pedido 2', 3);
+INSERT INTO Pedido (produto_id, comanda_id, dataHoraSolicitacao, dataHoraInicioPreparo, tempoPreparoRestante, statusPreparo, observacao, quantidade)
+VALUES
+    (1, 1, '2023-07-25 12:30:00'::timestamp, NULL, NULL, 'Pendente', 'Sem cebola', 2),
+    (2, 1, '2023-07-25 12:35:00'::timestamp, '2023-07-25 12:40:00'::timestamp, NULL, 'Em preparo', 'Com borda recheada', 1),
+    (3, 1, '2023-07-25 12:38:00'::timestamp, NULL, NULL, 'Pendente', NULL, 3),
+    (4, 2, '2023-07-25 13:10:00'::timestamp, '2023-07-25 13:15:00'::timestamp, NULL, 'Em preparo', NULL, 2),
+    (5, 2, '2023-07-25 13:12:00'::timestamp, NULL, NULL, 'Pendente', 'Com cobertura extra', 1),
+    (3, 2, '2023-07-25 13:18:00'::timestamp, NULL, NULL, 'Pendente', NULL, 1),
+    (3, 3, '2023-07-25 13:45:00'::timestamp, '2023-07-25 13:50:00'::timestamp, NULL, 'Em preparo', NULL, 1),
+    (1, 3, '2023-07-25 13:50:00'::timestamp, NULL, NULL, 'Pendente', 'Com queijo cheddar', 2),
+    (2, 4, '2023-07-25 14:20:00'::timestamp, NULL, NULL, 'Pendente', 'Meia calabresa e meia frango', 1),
+    (5, 4, '2023-07-25 14:22:00'::timestamp, NULL, NULL, 'Pendente', NULL, 1);

@@ -1,3 +1,14 @@
+CREATE TABLE Endereco (
+    id SERIAL PRIMARY KEY,
+    cep VARCHAR(10) NOT NULL,
+    cidade VARCHAR(100),
+    estado VARCHAR(50),
+    rua VARCHAR(100),
+    numero INTEGER NOT NULL,
+    bairro VARCHAR(100),
+    complemento VARCHAR(200)
+);
+
 create table pessoa (
 	id SERIAL primary key,
 	nome varchar(100) not null,
@@ -27,17 +38,6 @@ CREATE TABLE Funcionario (
     disponivel BOOLEAN
 );
 
-CREATE TABLE Endereco (
-    id SERIAL PRIMARY KEY,
-    cep VARCHAR(10) NOT NULL,
-    cidade VARCHAR(100),
-    estado VARCHAR(50),
-    rua VARCHAR(100),
-    numero INTEGER NOT NULL,
-    bairro VARCHAR(100),
-    complemento VARCHAR(200)
-);
-
 CREATE TABLE Usuario (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -65,6 +65,25 @@ CREATE TABLE Produto (
     ativo BOOLEAN NOT NULL
 );
 
+CREATE TABLE Mesa (
+    id SERIAL PRIMARY KEY,
+    codigo VARCHAR(50) NOT NULL,
+    numero INT NOT NULL,
+    statusMesa VARCHAR(50) NOT NULL,
+    capacidade INT NOT NULL
+);
+
+CREATE TABLE Comanda (
+    id SERIAL PRIMARY KEY,
+    mesa_id INT NOT NULL,
+    codigo VARCHAR(50) NOT NULL,
+    observacoes TEXT,
+    statusComanda VARCHAR(50) NOT NULL,
+    valorTotal DOUBLE PRECISION NOT NULL,
+    FOREIGN KEY (mesa_id) REFERENCES Mesa (id)
+);
+
+
 CREATE TABLE Pedido (
     id SERIAL PRIMARY KEY,
     produto_id INT NOT NULL,
@@ -79,23 +98,6 @@ CREATE TABLE Pedido (
     FOREIGN KEY (comanda_id) REFERENCES Comanda (id)
 );
 
-CREATE TABLE Comanda (
-    id SERIAL PRIMARY KEY,
-    mesa_id INT NOT NULL,
-    codigo VARCHAR(50) NOT NULL,
-    observacoes TEXT,
-    statusComanda VARCHAR(50) NOT NULL,
-    valorTotal DOUBLE PRECISION NOT NULL,
-    FOREIGN KEY (mesa_id) REFERENCES Mesa (id)
-);
-
-CREATE TABLE Mesa (
-    id SERIAL PRIMARY KEY,
-    codigo VARCHAR(50) NOT NULL,
-    numero INT NOT NULL,
-    statusMesa VARCHAR(50) NOT NULL,
-    capacidade INT NOT NULL
-);
 
 CREATE TABLE Cardapio (
     id SERIAL PRIMARY KEY,
@@ -107,4 +109,3 @@ CREATE TABLE CardapioProduto (
     cardapio_id INTEGER REFERENCES Cardapio (id) ON DELETE CASCADE,
     produto_id INTEGER REFERENCES Produto (id) ON DELETE CASCADE
 );
-

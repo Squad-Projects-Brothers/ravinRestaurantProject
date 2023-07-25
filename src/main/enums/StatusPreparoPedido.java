@@ -3,6 +3,6 @@ package main.enums;
 public enum StatusPreparoPedido {
   SOLICITADO,
   PRONTO,
-  PREPARADO,
+  PREPARANDO,
   ENTREGUE
 }
