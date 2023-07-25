@@ -13,8 +13,8 @@ public class ProdutoRepository implements ProdutoDAO {
   public void salvar(Produto produto) {
     try (Connection connection = ConnectionFactory.getConnection();
         PreparedStatement statement = connection.prepareStatement(
-            "INSERT INTO produto (nome, descricao, codigo, preco_custo, preco_venda, " +
-                "tempo_preparo, observacoes, tipo_produto, ativo) " +
+            "INSERT INTO produto (nome, descricao, codigo, precoCusto, precoVenda, " +
+                "tempoPreparo, observacoes, tipoProduto, ativo) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
       statement.setString(1, produto.getNome());
       statement.setString(2, produto.getDescricao());
@@ -43,11 +43,11 @@ public class ProdutoRepository implements ProdutoDAO {
         String nome = resultSet.getString("nome");
         String descricao = resultSet.getString("descricao");
         String codigo = resultSet.getString("codigo");
-        double precoCusto = resultSet.getDouble("preco_custo");
-        double precoVenda = resultSet.getDouble("preco_venda");
-        String tempoPreparo = resultSet.getString("tempo_preparo");
+        double precoCusto = resultSet.getDouble("precoCusto");
+        double precoVenda = resultSet.getDouble("precoVenda");
+        String tempoPreparo = resultSet.getString("tempoPreparo");
         String observacoes = resultSet.getString("observacoes");
-        TipoProdutoCardapio tipoProduto = TipoProdutoCardapio.valueOf(resultSet.getString("tipo_produto"));
+        TipoProdutoCardapio tipoProduto = TipoProdutoCardapio.valueOf(resultSet.getString("tipoProduto"));
         boolean ativo = resultSet.getBoolean("ativo");
 
         Produto produto = new Produto(id, nome, descricao, codigo, precoCusto, precoVenda,
@@ -82,11 +82,11 @@ public class ProdutoRepository implements ProdutoDAO {
         String nome = resultSet.getString("nome");
         String descricao = resultSet.getString("descricao");
         String codigo = resultSet.getString("codigo");
-        double precoCusto = resultSet.getDouble("preco_custo");
-        double precoVenda = resultSet.getDouble("preco_venda");
-        String tempoPreparo = resultSet.getString("tempo_preparo");
+        double precoCusto = resultSet.getDouble("precoCusto");
+        double precoVenda = resultSet.getDouble("precoVenda");
+        String tempoPreparo = resultSet.getString("tempoPreparo");
         String observacoes = resultSet.getString("observacoes");
-        TipoProdutoCardapio tipoProduto = TipoProdutoCardapio.valueOf(resultSet.getString("tipo_produto"));
+        TipoProdutoCardapio tipoProduto = TipoProdutoCardapio.valueOf(resultSet.getString("tipoProduto"));
         boolean ativo = resultSet.getBoolean("ativo");
 
         return new Produto(id, nome, descricao, codigo, precoCusto, precoVenda,

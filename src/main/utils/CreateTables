@@ -1,0 +1,110 @@
+create table pessoa (
+	id SERIAL primary key,
+	nome varchar(100) not null,
+	cpf varchar(14) not null,
+	telefone varchar(20),
+	data_nascimento date,
+	id_endereco integer references Endereco(id),
+	ativo boolean not null
+);
+
+CREATE TABLE Cliente (
+    id SERIAL PRIMARY KEY,
+    pessoa_id INTEGER NOT NULL REFERENCES Pessoa(id),
+    observacao TEXT
+);
+
+CREATE TABLE Funcionario (
+    id SERIAL PRIMARY KEY,
+    pessoa_id INTEGER NOT NULL REFERENCES Pessoa(id),
+    rg varchar(50) NOT NULL,
+    estado_civil varchar(200),
+    escolaridade varchar(200),
+    cargo varchar(200),
+    numero_carteira_trabalho varchar(50),
+    data_admissao DATE,
+    data_demissao DATE,
+    disponivel BOOLEAN
+);
+
+CREATE TABLE Endereco (
+    id SERIAL PRIMARY KEY,
+    cep VARCHAR(10) NOT NULL,
+    cidade VARCHAR(100),
+    estado VARCHAR(50),
+    rua VARCHAR(100),
+    numero INTEGER NOT NULL,
+    bairro VARCHAR(100),
+    complemento VARCHAR(200)
+);
+
+CREATE TABLE Usuario (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    login VARCHAR(50) NOT NULL,
+    senha VARCHAR(100) NOT NULL,
+    tipoUsuario VARCHAR(50) NOT NULL,
+    ativo BOOLEAN NOT NULL,
+    logado BOOLEAN NOT NULL,
+    criadoPor VARCHAR(100) NOT NULL,
+    criadoEm DATE NOT NULL,
+    alteradoPor VARCHAR(100),
+    alteradoEm DATE
+);
+
+CREATE TABLE Produto (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    descricao VARCHAR(200),
+    codigo VARCHAR(50) NOT NULL,
+    precoCusto NUMERIC(10, 2) NOT NULL,
+    precoVenda NUMERIC(10, 2) NOT NULL,
+    tempoPreparo VARCHAR(50),
+    observacoes TEXT,
+    tipoProduto VARCHAR(50) NOT NULL,
+    ativo BOOLEAN NOT NULL
+);
+
+CREATE TABLE Pedido (
+    id SERIAL PRIMARY KEY,
+    produto_id INT NOT NULL,
+    comanda_id INT NOT NULL,
+    dataHoraSolicitacao TIMESTAMP NOT NULL,
+    dataHoraInicioPreparo TIMESTAMP,
+    tempoPreparoRestante TIMESTAMP,
+    statusPreparo VARCHAR(50) NOT NULL,
+    observacao TEXT,
+    quantidade INT NOT NULL,
+    FOREIGN KEY (produto_id) REFERENCES Produto (id),
+    FOREIGN KEY (comanda_id) REFERENCES Comanda (id)
+);
+
+CREATE TABLE Comanda (
+    id SERIAL PRIMARY KEY,
+    mesa_id INT NOT NULL,
+    codigo VARCHAR(50) NOT NULL,
+    observacoes TEXT,
+    statusComanda VARCHAR(50) NOT NULL,
+    valorTotal DOUBLE PRECISION NOT NULL,
+    FOREIGN KEY (mesa_id) REFERENCES Mesa (id)
+);
+
+CREATE TABLE Mesa (
+    id SERIAL PRIMARY KEY,
+    codigo VARCHAR(50) NOT NULL,
+    numero INT NOT NULL,
+    statusMesa VARCHAR(50) NOT NULL,
+    capacidade INT NOT NULL
+);
+
+CREATE TABLE Cardapio (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE CardapioProduto (
+    id SERIAL PRIMARY KEY,
+    cardapio_id INTEGER REFERENCES Cardapio (id) ON DELETE CASCADE,
+    produto_id INTEGER REFERENCES Produto (id) ON DELETE CASCADE
+);
+

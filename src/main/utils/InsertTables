@@ -1,0 +1,51 @@
+-- Inserir alguns endereços
+INSERT INTO Endereco (cep, cidade, estado, rua, numero, bairro, complemento) VALUES
+    ('12345-678', 'Cidade A', 'Estado A', 'Rua A', 10, 'Bairro A', 'Complemento A'),
+    ('98765-432', 'Cidade B', 'Estado B', 'Rua B', 20, 'Bairro B', 'Complemento B');
+
+-- Inserir algumas pessoas
+INSERT INTO Pessoa (nome, cpf, telefone, data_nascimento, id_endereco, ativo) VALUES
+    ('João da Silva', '111.111.111-11', '(11) 1111-1111', '1990-01-01', 1, true),
+    ('Maria Souza', '222.222.222-22', '(22) 2222-2222', '1985-05-05', 2, true);
+
+-- Inserir clientes (vinculando a pessoa)
+INSERT INTO Cliente (pessoa_id, observacao) VALUES
+    (1, 'Cliente VIP'), (2, 'Cliente Novo');
+
+-- Inserir funcionários (vinculando a pessoa)
+INSERT INTO Funcionario (pessoa_id, rg, estado_civil, escolaridade, cargo, numero_carteira_trabalho, data_admissao, data_demissao, disponivel) VALUES
+    (1, '1234567-89', 'Solteiro(a)', 'Ensino Médio', 'Garçom', 'ABC123', '2021-01-01', NULL, true),
+    (2, '9876543-21', 'Casado(a)', 'Ensino Superior', 'Cozinheiro', 'XYZ789', '2020-05-01', NULL, true);
+
+-- Inserir usuários
+INSERT INTO Usuario (nome, login, senha, tipoUsuario, ativo, logado, criadoPor, criadoEm, alteradoPor, alteradoEm) VALUES
+    ('Administrador', 'admin', 'hashed_password', 'ADMIN', true, false, 'admin', '2023-07-23', NULL, NULL),
+    ('Funcionário', 'funcionario', 'hashed_password', 'FUNCIONARIO', true, false, 'admin', '2023-07-23', NULL, NULL);
+
+-- Inserir produtos
+INSERT INTO Produto (nome, descricao, codigo, precoCusto, precoVenda, tempoPreparo, observacoes, tipoProduto, ativo) VALUES
+    ('Produto 1', 'Descrição do Produto 1', 'COD001', 10.00, 20.00, '10 minutos', 'Observações Produto 1', 'Bebida', true),
+    ('Produto 2', 'Descrição do Produto 2', 'COD002', 15.00, 25.00, '15 minutos', 'Observações Produto 2', 'Comida', true);
+
+-- Inserir cardápios
+INSERT INTO Cardapio (nome) VALUES
+    ('Cardápio 1'), ('Cardápio 2');
+
+-- Inserir associação de produtos com cardápios
+INSERT INTO CardapioProduto (cardapio_id, produto_id) VALUES
+    (1, 1), (1, 2), (2, 2);
+
+-- Inserir mesas
+INSERT INTO Mesa (codigo, numero, statusMesa, capacidade) VALUES
+    ('MESA001', 1, 'Livre', 4),
+    ('MESA002', 2, 'Ocupada', 6);
+
+-- Inserir comandas (vinculando a mesa)
+INSERT INTO Comanda (mesa_id, codigo, observacoes, statusComanda, valorTotal) VALUES
+    (1, 'COM001', 'Comanda Mesa 1', 'ABERTA', 0.00),
+    (2, 'COM002', 'Comanda Mesa 2', 'FECHADA', 50.00);
+
+-- Inserir pedidos (vinculando a produto e comanda)
+INSERT INTO Pedido (produto_id, comanda_id, dataHoraSolicitacao, dataHoraInicioPreparo, tempoPreparoRestante, statusPreparo, observacao, quantidade) VALUES
+    (1, 1, '2023-07-23 12:30:00', '2023-07-23 12:35:00', '2023-07-23 12:40:00', 'EM_PREPARO', 'Pedido 1', 2),
+    (2, 2, '2023-07-23 13:00:00', '2023-07-23 13:05:00', '2023-07-23 13:10:00', 'CONCLUIDO', 'Pedido 2', 3);
